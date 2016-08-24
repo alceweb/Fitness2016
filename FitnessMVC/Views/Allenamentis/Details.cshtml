@@ -1,0 +1,58 @@
+﻿@model FitnessMVC.Models.Allenamenti
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Allenamenti</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Scheda_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Scheda_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GruppoMuscolare)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GruppoMuscolare)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Esercizio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Esercizio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Serie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Serie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ripetizioni)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ripetizioni)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

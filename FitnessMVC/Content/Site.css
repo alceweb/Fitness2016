@@ -1,0 +1,138 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background:#2f2e2e;
+    color:#fff;
+}
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.container{
+    background-color:rgba(48, 48, 48, 0.79);
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+    color:#000;
+}
+
+hr{
+border: thin;
+border-top: 1px solid #f7f7f7 !important;
+}
+.alert-success{
+    background-color: #dcdcdc;
+}
+
+/*Background*/
+.img-bg {
+    height: 100%;
+    width:auto;
+    left: 0;
+    min-height: 100%;
+    min-width: 1024px;
+    position: fixed;
+    width: 100%;
+    top:0px;
+    z-index:-9000;
+}
+.img-entra{
+    height:200px;
+    transition: 1s all ease;
+        -webkit-transition: 1s all ease;
+        -moz-transition: 1s all ease;
+        -o-transition: 1s all ease;
+}
+.img-entra:hover{
+        transition: 0.5s all ease;
+        -webkit-transition: 0.5s all ease;
+        -moz-transition: 0.5s all ease;
+        -o-transition: 0.5s all ease;
+        transform:rotate(360deg) scale(1.3);
+        -webkit-transform:rotate(360deg) scale(1.3);
+        -moz-transform:rotate(360deg) scale(1.3);
+        -o-transform:rotate(360deg) scale(1.3);
+}
+.img-scheda{
+    height:70px;
+}
+.img-esercizio{
+    height:70px;
+}
+.img-esercizio1{
+    width:100%;
+}
+
+.img-login{
+    height:50px;
+    border:solid 2px #fff;
+    border-radius:50%;
+}
+.img-usr{
+    height:50px;
+    border:solid 2px #fff;
+    border-radius:50%;
+}
+
+a{
+    color:#fff !important;
+}
+.well{
+    background:none;
+    border:none
+}
+.containerRipH {
+    font-size: 1em;
+}
+.containerRip{
+    font-size:1.4em;
+}
+.containerRip  input{
+    width:40px;
+}
+.serie{
+    text-align:center;
+}
+.ripetizioni{
+    text-align:center;
+}
+@media (min-width: 768px) {
+.containerRipH {
+    font-size: 1.5em;
+}
+
+.containerRip {
+    font-size: 1.5em;
+}
+    .serie{
+        line-height:2em;
+    }
+    .ripetizioni {
+        line-height:2em;
+    }
+}
+@media (max-width: 400px){
+.containerRipH {
+    font-size: 1em;
+}
+.input-rip{
+        width:10px;
+}
+.img-scheda{
+    display:block;
+    margin: auto;
+}
+}

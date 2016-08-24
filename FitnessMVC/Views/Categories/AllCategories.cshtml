@@ -1,0 +1,15 @@
+﻿@model IEnumerable<FitnessMVC.Models.Category>
+
+@{
+    ViewBag.Title = "AllCategories";
+}
+
+<h2>AllCategories</h2>
+@foreach (var category in Model)
+{
+<h3><u>@category.Name</u></h3>
+<div>
+    <ul>
+    </ul>
+</div>
+}

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<FitnessMVC.Models.Allenamenti>
+
+@{
+    ViewBag.Title = "Lista allenamenti";
+}
+
+<h2>
+    @if (File.Exists(Server.MapPath("~/Content/Immagini/Utenti/" + ViewBag.Uid + ".jpg")))
+            {
+        <img class="img-login" src="@Url.Content("~/Content/Immagini/Utenti/" + ViewBag.Uid + ".jpg")" />
+
+    }
+    else
+    {
+        <img class="img-login" src="@Url.Content("~/Content/Immagini/Utenti/Anonimous.jpg")" />
+    } Lista allenamenti <span class="badge">@ViewBag.NomeScheda</span> 
+</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GruppoMuscolare)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Serie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ripetizioni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Peso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Riposo)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GruppoMuscolare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ripetizioni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Peso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Riposo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

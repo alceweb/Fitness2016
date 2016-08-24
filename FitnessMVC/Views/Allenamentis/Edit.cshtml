@@ -1,0 +1,102 @@
+﻿@model FitnessMVC.Models.Allenamenti
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>
+    @if (File.Exists(Server.MapPath("~/Content/Immagini/Utenti/" + ViewBag.Uid + ".jpg")))
+            {
+        <img class="img-login" src="@Url.Content("~/Content/Immagini/Utenti/" + ViewBag.Uid + ".jpg")" />
+
+    }
+    else
+    {
+        <img class="img-login" src="@Url.Content("~/Content/Immagini/Utenti/Anonimous.jpg")" />
+    } Modifica allenamento
+</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model=>model.Scheda_Id)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Numero, new { @class = "form-control input-rip" })
+                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GruppoMuscolare, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GruppoMuscolare, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GruppoMuscolare, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serie, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Serie, new { @class = "form-control input-rip" })
+                @Html.ValidationMessageFor(model => model.Serie, "", new { @class = "text-danger" })
+                <span class="btn btn-warning">@Model.SerieUt <span class="badge">fatte</span></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ripetizioni, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Ripetizioni, new { @class = "form-control input-rip" })
+                @Html.ValidationMessageFor(model => model.Ripetizioni, "", new { @class = "text-danger" })
+                <span class="btn btn-warning">@Model.RipetizioniUt <span class="badge">fatte</span></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Peso, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Peso, new { @class = "form-control input-rip" })
+                @Html.ValidationMessageFor(model => model.Peso, "", new { @class = "text-danger" })
+                <span class="btn btn-warning">@Model.PesoUt <span class="badge">fatte</span></span>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Riposo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Riposo, new { @class = "form-control input-rip" })
+                @Html.ValidationMessageFor(model => model.Riposo, "", new { @class = "text-danger" })
+                <span class="btn btn-warning">@Model.RiposoUt <span class="badge">fatte</span></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descrizione, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Descrizione, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Descrizione, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Torna alla lista allenamenti", "Details", "Schedes", new { id = Request.QueryString["Sid"] }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FitnessMVC.Models.Schede>
+
+@{
+    ViewBag.Title = "Schede";
+}
+
+<h2>
+    @if (File.Exists(Server.MapPath("~/Content/Immagini/Utenti/" + ViewBag.Uid + ".jpg")))
+            {
+        <img class="img-login" src="@Url.Content("~/Content/Immagini/Utenti/" + ViewBag.Uid + ".jpg")" />
+
+    }
+    else
+    {
+        <img class="img-login" src="@Url.Content("~/Content/Immagini/Utenti/Anonimous.jpg")" /><span>Gestisci profilo</span>
+    }
+     @ViewBag.Title di 
+@foreach (var item in @ViewBag.Nomeu)
+{
+    @item.UserName
+}
+    </h2>
+<div>
+    <a href='@Url.Action("Create", "Schedes", new { user = ViewBag.Uid })' class="btn btn-primary"><span class="badge">@ViewBag.SchedeCount</span> Nuova</a>
+</div>
+<p></p>
+<table class="table table-responsive h3">
+    <tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.ActionLink(" ", "Edit", "Schedes", new { id = item.Id, user = ViewBag.Uid}, new {@class= "glyphicon glyphicon-pencil"})</td>
+        <td>
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.Nome).ToString(), "Details", new { id = item.Id }, new { @class = "btn btn-success" })
+        </td>
+    </tr>
+}
+
+</table><hr/>
+<div>
+    @Html.ActionLink("Torna alla lista utenti", "Index", "UsersAdmin")
+</div>

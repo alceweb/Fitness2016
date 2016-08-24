@@ -1,0 +1,112 @@
+﻿@model FitnessMVC.Models.Allenamenti
+
+@{
+    ViewBag.Title = "EditUt";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Ripetizioni)
+    @Html.HiddenFor(model => model.Serie)
+    @Html.HiddenFor(model => model.GruppoMuscolare)
+    @Html.HiddenFor(model => model.Esercizio_Id)
+    @Html.HiddenFor(model => model.Peso)
+    @Html.HiddenFor(model => model.Scheda_Id)
+    @Html.HiddenFor(model => model.Descrizione)
+
+
+    <div class="row">
+        <div class="col col-md-12 text-center"> 
+            <img class="img-rounder img-circle img-esercizio" src="@Url.Content("~/Content/Immagini/Esercizi/" + Model.Esercizio_Id + ".jpg")" />
+
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink(" ", "DetailsUt", "Schedes", new { id = Request["scheda"], ese = Request.QueryString["ese"] }, new { @class = "glyphicon glyphicon-arrow-left" })
+
+    </div>
+    <div class="row containerRip">
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        <span >Serie</span> 
+                    </td>
+                    <td>
+                        <text></text>
+                        <label class="label label-warning">@Model.Serie</label>
+                    </td>
+                    <td>
+                        <button id="btnSerie" type="button" class="btn btn-sm btn-primary "><span class="glyphicon glyphicon-arrow-right"></span></button>
+                    </td>
+                    <td>
+                        <button id="btnGiuSerie" type="button" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-arrow-down"></span></button>
+                        @Html.TextBoxFor(model => model.SerieUt, new { id = "textSerie", @class = "input-sm" }) 
+                        <button id="btnSuSerie" type="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-up"></span></button>
+                        @Html.ValidationMessageFor(model => model.SerieUt, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span >Ripetizioni</span> 
+                    </td>
+                    <td>
+                        <span class="label label-warning">@Model.Ripetizioni</span>
+                    </td>
+                    <td>
+                        <button id="btnRipetizioni" type="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-right"></span></button>
+                    </td>
+                    <td>
+                        <button id="btnGiuRipetizioni" type="button" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-arrow-down"></span></button>
+                        @Html.TextBoxFor(model => model.RipetizioniUt, new { id = "textRipetizioni", @class = "input-sm" })
+                        <button id="btnSuRipetizioni" type="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-up"></span></button>
+                        @Html.ValidationMessageFor(model => model.RipetizioniUt, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <button class="btn btn-success">Salva</button>
+                    </td>
+                </tr>
+            </table>
+   </div>
+    <div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+    $(function () {
+        $('#btnSerie').click(function () {
+            $('#textSerie').val(@Model.Serie);
+
+        });
+        $('#btnRipetizioni').click(function () {
+            $('#textRipetizioni').val(@Model.Ripetizioni);
+
+        });
+        $('#btnSuSerie').click(function () {
+            var se = parseInt($('#textSerie').val());
+            $('#textSerie').val(se + 1)
+        });
+        $('#btnGiuSerie').click(function () {
+            var se = parseInt($('#textSerie').val());
+            $('#textSerie').val(se - 1)
+        });
+        $('#btnSuRipetizioni').click(function () {
+            var se = parseInt($('#textRipetizioni').val());
+            $('#textRipetizioni').val(se + 1)
+        });
+        $('#btnGiuRipetizioni').click(function () {
+            var se = parseInt($('#textRipetizioni').val());
+            $('#textRipetizioni').val(se - 1)
+        });
+    })
+</script>
+}
+

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FitnessMVC.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Gestione utenti";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="col col-md-8">
+        <a href="#nogo" class="btn btn-primary" title="Inserimento utente disabilitato"><span class="badge">@ViewBag.UtentiCount</span> Nuovo</a>
+    </div>
+    <div class="col col-md-4 text-right">
+    </div>
+</div>
+<p>
+</p>
+<table class="table table-responsive">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (File.Exists(Server.MapPath("~/Content/Immagini/Utenti/" +item.Id + ".jpg")))
+                {
+                    <img class="img-login" src="@Url.Content("~/Content/Immagini/Utenti/" + item.Id + ".jpg")" />
+
+                }
+                else
+                {
+                    <img class="img-login" src="@Url.Content("~/Content/Immagini/Utenti/Anonimous.jpg")" /><span>Gestisci profilo</span>
+                }
+            </td>
+            <td>
+                <span class="badge">@Html.DisplayFor(modelItem => item.UserName)</span> <span class="text-primary h4"> Nome Cognome Indirizzo via Città CAP -Tel. telefono</span>
+
+            </td>
+            <td>
+                @Html.ActionLink("Schede", "Index", "Schedes", new { id = item.Id }, new { @class = "btn btn-success", title = "Schede personal trainer" })
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+

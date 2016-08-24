@@ -1,0 +1,27 @@
+﻿@model FitnessMVC.Models.Schede
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="row">
+    <img class="img-rounded img-circle img-scheda" src='@Url.Content("~/Content/Immagini/Schede/" + Model.Id + ".jpg")' /> <h4>@Model.Nome</h4>
+</div>
+@Html.ActionLink(" ", "PersonalTrainer", "Home", null, new { @class = "glyphicon glyphicon-arrow-left text-primary" })
+<hr />
+@foreach (var gruppo in (List<FitnessMVC.Models.AllPercViewModel>)ViewBag.Allenamenti)
+{
+    <div class="row">
+            <div class="col col-md-4">
+                
+                <a href='@Url.Action("DetailsUt", "Schedes", new { id = Model.Id, ese = gruppo.Numero})'><img class="img-usr" src='@Url.Content("~/Content/Immagini/Giorni/" + @gruppo.Numero + ".jpg")' /> Allenamento N.@gruppo.Numero </a>
+            </div>
+            <div class="col col-md-8">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: @(gruppo.SommaSerieUt*100/gruppo.SommaSerie)%;">
+                        @(gruppo.SommaSerieUt * 100 / gruppo.SommaSerie)%
+                    </div>
+                </div>
+            </div>
+        </div><br/>
+}
+@Html.ActionLink(" ", "PersonalTrainer", "Home", null, new { @class = "glyphicon glyphicon-arrow-left text-primary " })

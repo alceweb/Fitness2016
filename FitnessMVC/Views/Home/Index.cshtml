@@ -1,0 +1,83 @@
+﻿@model IEnumerable<FitnessMVC.Models.Schede>
+
+@{
+    ViewBag.Title = "Index";
+}
+    <h3 class="text-center">Personal Trainet Test</h3>
+<div class="row text-center">
+        <!-- Button trigger Cosamodal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#cosaModal">
+            Cosa
+        </button>
+        <!-- CosaModal -->
+        <div class="modal fade" id="cosaModal" tabindex="-1" role="dialog" aria-labelledby="cosaModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-danger text-center" id="cosaModalLabel">Cos'è Personal Trainer</h4>
+                    </div>
+                    <div class="modal-body text-justify ">
+                        <span class="text-primary">Questa è una WEB-APP di test per verificare le funzionalità dell'applicazione <strong>"Personal Trainer"</strong><br/>
+                        E' composta da una parte client, molto user friendly, preparata per la visione da <strong>Smartphone</strong> e una parte amministrativa più spartana e dedicata alla preparazione delle schede di allenamento.<br/>
+                        In questa versione alcune funzioni sono disabilitate o non implementate.<br/>
+                        Lo scopo principale dell'applicazione è quello di sostituire la scheda cartacea di allenamento e di dare la possibilità di accedere da qualsiasi posto al proprio stato di allenamento.</span>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Button trigger Chimodal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#chiModal">
+            Chi
+        </button>
+        <!-- ChiModal -->
+        <div class="modal fade" id="chiModal" tabindex="-1" role="dialog" aria-labelledby="chiModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-danger text-center" id="chiModalLabel">Chi la può usare</h4>
+                    </div>
+                    <div class="modal-body text-justify ">
+                        <span class="text-primary">All'applicazione <strong>"Personal Trainer"</strong> possono accedere solo gli iscritti alla palestra che possiedono la tessera GOLD.<br />
+                        Dipende dalla direzione della palestra decidere se omaggiare della scheda GOLD i migliori clienti per offrire qualcosa di più rispetto alle altre palestre oppure venderla come servizio aggiuntivo<br/>
+                        In ogni caso resta un ottimo metodo per fidelizzare i clienti.
+                        </span>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Button trigger Perchèmodal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#perModal">
+        Perchè
+    </button>
+    <!-- CPerchèModal -->
+    <div class="modal fade" id="perModal" tabindex="-1" role="dialog" aria-labelledby="perModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-danger text-center" id="perModalLabel">Perchè usarla</h4>
+                </div>
+                <div class="modal-body text-justify">
+                    <span class="text-primary">
+                        Fai una prova la prossima volta che c'è in palestra un pò di gente, prova a contare se nella tua palestra ci sono più cyclette o più smartphone<br/>
+                        Capita spesso di vedere gente in allenamento che ascolta la musica dello smartphone o che tra un esercizio e l'altro chatta, messaggia, invia una mail<br/>
+                        Allora perchè non sfruttare questa opportunità?<br/>
+                        Digitalizziamo le schede di allenamento, il cliente si sentirà più seguito e potrà in ogni momento controllare e verificare lo stato della sua preparazione.
+                    </span>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+<hr />
+<div class="text-center"><h2>Entra</h2><a href='@Url.Action("PersonalTrainer", "Home")'>
+        <img class="img-circle img-thumbnail img-entra" src="~/Content/Immagini/entra.jpg" /></a></div>
