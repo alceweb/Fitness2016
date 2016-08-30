@@ -101,7 +101,7 @@ namespace FitnessMVC.Controllers
                 return HttpNotFound();
             }
             int ese = Convert.ToInt16(Request.QueryString["ese"]);
-            var allenamenti = db.Allenamentis.Where(s => s.Scheda_Id == id && s.Numero == ese).Include(s=>s.Esercizio);
+            var allenamenti = db.Allenamentis.Where(s => s.Scheda_Id == id & s.Numero == ese).Include(s=>s.Esercizio);
             ViewBag.Allenamenti = allenamenti;
             ViewBag.NumeroAllenamento = ese;
             var allenamentig = db.Allenamentis.Where(s => s.Scheda_Id == id && s.Numero == ese)

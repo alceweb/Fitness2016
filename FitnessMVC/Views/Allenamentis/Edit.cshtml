@@ -29,7 +29,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Numero, new { @class = "form-control input-rip" })
+                @Model.Numero
                 @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -94,7 +94,7 @@
 }
 
 <div>
-    @Html.ActionLink("Torna alla lista allenamenti", "Details", "Schedes", new { id = Request.QueryString["Sid"] }, null)
+    @Html.ActionLink("Torna alla lista allenamenti", "Details", "Schedes", new { id = Model.Scheda_Id }, null)
 </div>
 
 @section Scripts {

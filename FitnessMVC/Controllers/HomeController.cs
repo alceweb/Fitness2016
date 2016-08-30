@@ -49,9 +49,8 @@ namespace FitnessMVC.Controllers
 
         public ActionResult Test()
         {
-            Calcolatore calc = new Calcolatore();
-            double risultato = calc.Potenza(2, 6);
-            return View();
+            var allenamenti = db.Allenamentis.ToArray();
+            return View(allenamenti);
         }
         [HttpPost]
         public ActionResult Test(string[] args)

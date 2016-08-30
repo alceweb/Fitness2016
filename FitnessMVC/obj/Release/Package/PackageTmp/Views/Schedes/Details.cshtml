@@ -12,8 +12,9 @@ else
 {
     <img class="img-login" src="@Url.Content("~/Content/Immagini/Utenti/Anonimous.jpg")" /><span>Gestisci profilo</span>
 }
-@Model.Nome </h2>
-<h2><a href='@Url.Action("Create", "Allenamentis", new { id = Model.Id, user = Model.User_Id })' class="btn btn-primary"><span class="badge">@ViewBag.AllenamentiCount</span> Nuovo</a></h2>
+@Model.Nome </h2>@Html.ActionLink(" ", "Index", "Schedes", new { id = Model.User_Id }, new { @class = "glyphicon glyphicon-arrow-left text-primary" })
+
+<h2><a href='@Url.Action("Create", "Allenamentis", new { id = Model.Id, user = Model.User_Id, Allenameno = Model.Nome })' class="btn btn-primary"><span class="badge">@ViewBag.AllenamentiCount</span> Nuovo</a></h2>
 <table class="table table-responsive">
     <thead>
         <tr>
@@ -33,8 +34,7 @@ else
                 <td>@item.TotMovimenti</td>
                 <td>@item.MaxNumero</td>
                 <td>
-                    @Html.ActionLink("Modifica", "Edit", "Allenamentis", new { id = @item.Esercizio_Id, user = Model.User_Id }, null)
-                    @Html.ActionLink("Cancella", "Delete", "Allenamentis", new { id = @item.Esercizio_Id}, null)
+                    @Html.ActionLink("Modifica esercizio", "ListEseEdit", "Allenamentis", new { id = @item.Esercizio_Id, user = Model.User_Id, idScheda = Model.Id }, null)
                 </td>
             </tr>
         }

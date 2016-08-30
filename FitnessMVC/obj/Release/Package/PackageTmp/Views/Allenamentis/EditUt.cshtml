@@ -67,6 +67,40 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        <span>Peso</span>
+                    </td>
+                    <td>
+                        <span class="label label-warning">@Model.Peso</span>
+                    </td>
+                    <td>
+                        <button id="btnPeso" type="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-right"></span></button>
+                    </td>
+                    <td>
+                        <button id="btnGiuPeso" type="button" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-arrow-down"></span></button>
+                        @Html.TextBoxFor(model => model.PesoUt, new { id = "textPeso", @class = "input-sm" })
+                        <button id="btnSuPeso" type="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-up"></span></button>
+                        @Html.ValidationMessageFor(model => model.PesoUt, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Riposo</span>
+                    </td>
+                    <td>
+                        <span class="label label-warning">@Model.Riposo</span>
+                    </td>
+                    <td>
+                        <button id="btnRiposo" type="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-right"></span></button>
+                    </td>
+                    <td>
+                        <button id="btnGiuRiposo" type="button" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-arrow-down"></span></button>
+                        @Html.TextBoxFor(model => model.RiposoUt, new { id = "textRiposo", @class = "input-sm" })
+                        <button id="btnSuRiposo" type="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-arrow-up"></span></button>
+                        @Html.ValidationMessageFor(model => model.RiposoUt, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="6">
                         <button class="btn btn-success">Salva</button>
                     </td>
@@ -90,6 +124,14 @@
             $('#textRipetizioni').val(@Model.Ripetizioni);
 
         });
+        $('#btnPeso').click(function () {
+            $('#textPeso').val(@Model.Peso);
+
+        });
+        $('#btnRiposo').click(function () {
+            $('#textRiposo').val(@Model.Riposo);
+
+        });
         $('#btnSuSerie').click(function () {
             var se = parseInt($('#textSerie').val());
             $('#textSerie').val(se + 1)
@@ -105,6 +147,22 @@
         $('#btnGiuRipetizioni').click(function () {
             var se = parseInt($('#textRipetizioni').val());
             $('#textRipetizioni').val(se - 1)
+        });
+        $('#btnSuPeso').click(function () {
+            var se = parseInt($('#textPeso').val());
+            $('#textPeso').val(se + 1)
+        });
+        $('#btnGiuPeso').click(function () {
+            var se = parseInt($('#textPeso').val());
+            $('#textPeso').val(se - 1)
+        });
+        $('#btnSuRiposo').click(function () {
+            var se = parseInt($('#textRiposo').val());
+            $('#textRiposo').val(se + 1)
+        });
+        $('#btnGiuRiposo').click(function () {
+            var se = parseInt($('#textRiposo').val());
+            $('#textRiposo').val(se - 1)
         });
     })
 </script>

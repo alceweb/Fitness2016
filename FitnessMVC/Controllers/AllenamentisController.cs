@@ -70,6 +70,7 @@ namespace FitnessMVC.Controllers
 
         public ActionResult ListEseEdit(int? id)
         {
+            ViewBag.Ese = id;
             ViewBag.Uid = Request.QueryString["user"];
             int scheda = Convert.ToInt32(Request.QueryString["idScheda"]);
             string[] nomeScheda = db.Schedes.Where(s => s.Id == scheda).Select(s => s.Descrizione).ToArray();
@@ -81,6 +82,7 @@ namespace FitnessMVC.Controllers
         // GET: Allenamentis/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Uid = Request.QueryString["user"];
             Allenamenti allenamenti = db.Allenamentis.Find(id);
             if (id == null)
             {
@@ -98,13 +100,18 @@ namespace FitnessMVC.Controllers
         // Per ulteriori dettagli, vedere http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Scheda_Id,GruppoMuscolare,Esercizio_Id,Serie,SerieUt,Ripetizioni,RipetizioniUt,Peso,PesoUt,Riposo,RiposoUt,Descrizione,Numero")] Allenamenti allenamenti)
+        public ActionResult Edit(EditAllenamentoViewModel allenamenti, int? id)
         {
+            int scheda = Convert.ToInt32(Request.QueryString["SchedaId"]);
+            int numero = Convert.ToInt32(Request.QueryString["numero"]);
+            int esercizio = Convert.ToInt32(Request.QueryString["ese"]);
+            var allenamento = db.Allenamentis.Where(s => s.Scheda_Id == scheda && s.Numero >= numero && s.Esercizio_Id == esercizio);
             if (ModelState.IsValid)
             {
-                db.Entry(allenamenti).State = EntityState.Modified;
+                allenamento.ToList().ForEach(c => c.Serie = allenamenti.Serie);
+                allenamento.ToList().ForEach(c => c.Ripetizioni = allenamenti.Ripetizioni);
                 db.SaveChanges();
-                return RedirectToAction("Details", "Schedes", new { id = Request.QueryString["Sid"] });
+                return RedirectToAction("ListEseEdit", "Allenamentis", new { id = esercizio ,idScheda = scheda,user = Request.QueryString["user"]});
             }
             return View(allenamenti);
         }

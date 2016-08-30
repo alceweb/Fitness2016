@@ -83,6 +83,22 @@
             @Html.DisplayFor(model => model.PesoUt)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Riposo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Riposo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RiposoUt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RiposoUt)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
@@ -90,7 +106,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "ListEseEdit", new { id = Request.QueryString["idScheda"], user = Request.QueryString["user"] })
         </div>
     }
 </div>

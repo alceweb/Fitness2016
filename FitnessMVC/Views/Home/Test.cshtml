@@ -4,7 +4,10 @@
 }
 
 <h2>Test</h2>
-Numero: <input type="text" name="numero" /><br/>
-Esponete: <input type="text" name="esponente" /><br />
-<input type="submit" value="calcola" />
-<label name="risultato">@ViewBag.Risultato</label>
+<h3></h3>
+@ViewBag.Serie
+@foreach (var item in Model)
+{
+    
+    @item.Serie <br/>
+}

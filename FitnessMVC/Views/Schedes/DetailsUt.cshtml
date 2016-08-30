@@ -31,14 +31,23 @@
 @foreach (var item in ViewBag.Allenamenti)
 {
     <div class="row containerRip">
-        <div class="col col-md-4 text-center">
+        <div class="col col-md-8 text-center">
             <span class="h5 text-uppercase">@item.Esercizio.Descrizione</span>
             <span class="text-danger">@item.GruppoMuscolare </span><br />
-            @if (@item.SerieUt > 0)
-            {
-                <div class="label label-success"><span class="glyphicon glyphicon-ok"></span></div>
-            }
- 
+            @{
+                int diff = @item.SerieUt - @item.Serie;
+                switch (diff)
+                {
+                    case 0:
+                        <div class="label label-success"><span class="glyphicon glyphicon-ok"></span></div>
+                    break;
+                           case @item.SerieUt:
+                        break;
+
+                 }
+
+
+              }
             <!-- Button trigger modal -->
             <a data-toggle="modal" data-target="#@item.Esercizio_Id" href="#nogo"><img class="img-usr" src='@Url.Content("~/Content/Immagini/Esercizi/" + item.Esercizio_Id + ".jpg")' /></a>
             <!-- Modal -->
@@ -59,8 +68,10 @@
                 </div>
             </div>
 
+        </div>
+        <div class="col col-md-4 text-right">
             @if (@item.SerieUt > 0)
-            {
+                        {
                 <a href='@Url.Action("EditUt", "Allenamentis", new { id = item.Id, scheda = Model.Id, ese = Request.QueryString["ese"] })' class="label label-success">Modifica numeri </a>
             }
             else
@@ -68,135 +79,132 @@
                 <a href='@Url.Action("EditUt", "Allenamentis", new { id = item.Id, scheda = Model.Id, ese = Request.QueryString["ese"] })' class="label label-info">Inserisci numeri</a>
             }
 
-
-</div>
-        <div class="col col-md-8">
-           <table class="table table-responsive text-center">
-                <tr>
-                    <td>
-                        Serie
-
-                    </td>
-                    <td>
-                        <span class="label label-warning">@item.Serie</span>
-
-                    </td>
-                    <td>
-                        <a href='@Url.Action("EditUt", "Allenamentis", new { id = item.Id, scheda = Model.Id, ese = Request.QueryString["ese"] })'>
-                            <span class="label label-success">@item.SerieUt</span>
-                        </a>
-                    </td>
-                    <td>
-                        @if (@item.SerieUt > @item.Serie)
-                                {
-                                <span class="glyphicon glyphicon-arrow-up text-primary"></span>
-                                }
-                        @if (@item.SerieUt == @item.Serie)
-                                {
-                                <span class="glyphicon glyphicon-ok-circle text-success"></span>
-                                }
-                        @if (@item.SerieUt < @item.Serie)
-                                {
-                                <span class="glyphicon glyphicon-arrow-down text-danger"></span>
-                                }
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Ripetizioni
-
-                    </td>
-                    <td>
-                        <span class="label label-warning">@item.Ripetizioni</span>
-
-                    </td>
-                    <td>
-                        <a href='@Url.Action("EditUt", "Allenamentis", new { id = item.Id, scheda = Model.Id, ese = Request.QueryString["ese"] })'>
-                            <span class="label label-success">@item.RipetizioniUt</span>
-                        </a>
-
-                    </td>
-                    <td>
-                        @if (@item.RipetizioniUt > @item.Ripetizioni)
-                        {
-                            <span class="glyphicon glyphicon-arrow-up text-primary"></span>
-                        }
-                        @if (@item.RipetizioniUt == @item.Ripetizioni)
-                        {
-                            <span class="glyphicon glyphicon-ok-circle text-success"></span>
-                        }
-                        @if (@item.RipetizioniUt < @item.Ripetizioni)
-                        {
-                            <span class="glyphicon glyphicon-arrow-down text-danger"></span>
-                        }
-
-                    </td>
-                </tr>
-               <tr>
-                   <td>
-                       Peso
-
-                   </td>
-                   <td>
-                       <span class="label label-warning">@item.Peso</span>
-
-                   </td>
-                   <td>
-                       <a href='@Url.Action("EditUt", "Allenamentis", new { id = item.Id, scheda = Model.Id, ese = Request.QueryString["ese"] })'>
-                           <span class="label label-success">@item.PesoUt</span>
-                       </a>
-                   </td>
-                   <td>
-                       @if (@item.PesoUt > @item.Peso)
-                       {
-                           <span class="glyphicon glyphicon-arrow-up text-primary"></span>
-                       }
-                       @if (@item.PesoUt == @item.Peso)
-                       {
-                           <span class="glyphicon glyphicon-ok-circle text-success"></span>
-                       }
-                       @if (@item.PesoUt < @item.Peso)
-                       {
-                           <span class="glyphicon glyphicon-arrow-down text-danger"></span>
-                       }
-
-                   </td>
-               </tr>
-               <tr>
-                   <td>
-                       Riposo
-
-                   </td>
-                   <td>
-                       <span class="label label-warning">@item.Riposo</span>
-
-                   </td>
-                   <td>
-                       <a href='@Url.Action("EditUt", "Allenamentis", new { id = item.Id, scheda = Model.Id, ese = Request.QueryString["ese"] })'>
-                           <span class="label label-success">@item.RiposoUt</span>
-                       </a>
-                   </td>
-                   <td>
-                       @if (@item.RiposoUt > @item.Riposo)
-                       {
-                           <span class="glyphicon glyphicon-arrow-up text-primary"></span>
-                       }
-                       @if (@item.RiposoUt == @item.Riposo)
-                       {
-                           <span class="glyphicon glyphicon-ok-circle text-success"></span>
-                       }
-                       @if (@item.RiposoUt < @item.Riposo)
-                       {
-                           <span class="glyphicon glyphicon-arrow-down text-danger"></span>
-                       }
-
-                   </td>
-               </tr>
-           </table>
         </div>
-    </div>
- <hr />
+        </div>
+                <table class="table table-responsive text-center containerRip">
+                    <tr>
+                        <td>
+                            Serie
+
+                        </td>
+                        <td>
+                            <span class="label label-warning">@item.Serie</span>
+
+                        </td>
+                        <td>
+                            <a href='@Url.Action("EditUt", "Allenamentis", new { id = item.Id, scheda = Model.Id, ese = Request.QueryString["ese"] })'>
+                                <span class="label label-success">@item.SerieUt</span>
+                            </a>
+                        </td>
+                        <td>
+                            @if (@item.SerieUt > @item.Serie)
+                {
+                                <span class="glyphicon glyphicon-arrow-up text-primary"></span>
+                            }
+                            @if (@item.SerieUt == @item.Serie)
+                {
+                                <span class="glyphicon glyphicon-ok-circle text-success"></span>
+                            }
+                            @if (@item.SerieUt < @item.Serie)
+                {
+                                <span class="glyphicon glyphicon-arrow-down text-danger"></span>
+                            }
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Ripetizioni
+
+                        </td>
+                        <td>
+                            <span class="label label-warning">@item.Ripetizioni</span>
+
+                        </td>
+                        <td>
+                            <a href='@Url.Action("EditUt", "Allenamentis", new { id = item.Id, scheda = Model.Id, ese = Request.QueryString["ese"] })'>
+                                <span class="label label-success">@item.RipetizioniUt</span>
+                            </a>
+
+                        </td>
+                        <td>
+                            @if (@item.RipetizioniUt > @item.Ripetizioni)
+                {
+                                <span class="glyphicon glyphicon-arrow-up text-primary"></span>
+                            }
+                            @if (@item.RipetizioniUt == @item.Ripetizioni)
+                {
+                                <span class="glyphicon glyphicon-ok-circle text-success"></span>
+                            }
+                            @if (@item.RipetizioniUt < @item.Ripetizioni)
+                {
+                                <span class="glyphicon glyphicon-arrow-down text-danger"></span>
+                            }
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Peso
+
+                        </td>
+                        <td>
+                            <span class="label label-warning">@item.Peso</span>
+
+                        </td>
+                        <td>
+                            <a href='@Url.Action("EditUt", "Allenamentis", new { id = item.Id, scheda = Model.Id, ese = Request.QueryString["ese"] })'>
+                                <span class="label label-success">@item.PesoUt</span>
+                            </a>
+                        </td>
+                        <td>
+                            @if (@item.PesoUt > @item.Peso)
+                {
+                                <span class="glyphicon glyphicon-arrow-up text-primary"></span>
+                            }
+                            @if (@item.PesoUt == @item.Peso)
+                {
+                                <span class="glyphicon glyphicon-ok-circle text-success"></span>
+                            }
+                            @if (@item.PesoUt < @item.Peso)
+                {
+                                <span class="glyphicon glyphicon-arrow-down text-danger"></span>
+                            }
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Riposo
+
+                        </td>
+                        <td>
+                            <span class="label label-warning">@item.Riposo</span>
+
+                        </td>
+                        <td>
+                            <a href='@Url.Action("EditUt", "Allenamentis", new { id = item.Id, scheda = Model.Id, ese = Request.QueryString["ese"] })'>
+                                <span class="label label-success">@item.RiposoUt</span>
+                            </a>
+                        </td>
+                        <td>
+                            @if (@item.RiposoUt > @item.Riposo)
+                {
+                                <span class="glyphicon glyphicon-arrow-up text-primary"></span>
+                            }
+                            @if (@item.RiposoUt == @item.Riposo)
+                {
+                                <span class="glyphicon glyphicon-ok-circle text-success"></span>
+                            }
+                            @if (@item.RiposoUt < @item.Riposo)
+                {
+                                <span class="glyphicon glyphicon-arrow-down text-danger"></span>
+                            }
+
+                        </td>
+                    </tr>
+                </table>
+ <hr class="hr1" />
 }
 <div>
 @Html.ActionLink(" ", "ListUt", "Schedes", new { id = Model.Id, ese = Request.QueryString["ese"] }, new { @class = "glyphicon glyphicon-arrow-left text-primary" })

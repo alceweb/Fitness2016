@@ -79,7 +79,7 @@ namespace FitnessMVC.Models
         public int AllenamentoId { get; set; }
     }
 
-    public class Edit1ViewModel
+    public class EditAllenamentoViewModel
     {
         [Key]
         public int Id { get; set; }

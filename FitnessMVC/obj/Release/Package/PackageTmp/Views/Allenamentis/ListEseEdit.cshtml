@@ -41,6 +41,7 @@
         </th>
         <th></th>
     </tr>
+
     @foreach (var item in Model)
     {
         <tr>
@@ -52,7 +53,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Serie)
-                @item.Ripetizioni.
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Ripetizioni)
@@ -64,12 +64,10 @@
                 @Html.DisplayFor(modelItem => item.Riposo)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id, ese = item.Esercizio_Id, SchedaId = item.Scheda_Id, numero = item.Numero, user = Request.QueryString["user"] }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id, user = Request.QueryString["user"] }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id, user = Request.QueryString["user"], idScheda = Request.QueryString["idScheda"] })
             </td>
         </tr>
     }
 
 </table>
-<h2>
-</h2>
