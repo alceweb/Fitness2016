@@ -84,7 +84,7 @@ namespace FitnessMVC.Controllers
             }
             var allenamenti = db.Allenamentis.Include(e => e.Esercizio).Where(s => s.Scheda_Id == id)
                 .GroupBy(row => new { row.Numero})
-                .Select(group => new AllPercViewModel { Numero = group.Key.Numero, SommaSerieUt = group.Sum(s => s.SerieUt), SommaSerie = group.Sum(s=>s.Serie) }).ToList();
+                .Select(group => new AllPercViewModel { Numero = group.Key.Numero, SommaSerieUt = group.Sum(s => s.SerieUt), SommaSerie = group.Sum(s=>s.Serie), DataInizio = group.Min(d=>d.Data), DataFine = group.Max(d=>d.Data) }).ToList();
             ViewBag.Allenamenti = allenamenti;
             return View(schede);
         }

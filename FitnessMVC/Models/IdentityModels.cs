@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -35,6 +36,8 @@ namespace FitnessMVC.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name ="Data allenamento")]
+        public DateTime Data { get; set; }
         [Display(Name ="Giorno")]
         public int Numero { get; set; }
         public int Scheda_Id { get; set; }

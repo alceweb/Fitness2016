@@ -70,6 +70,8 @@ namespace FitnessMVC.Models
         public int Numero { get; set; }
         public int SommaSerieUt { get; set; }
         public int SommaSerie { get; set; }
+        public DateTime DataInizio { get; set; }
+        public DateTime DataFine {get;set;}
     }
     public class AllList1ViewModel
     {

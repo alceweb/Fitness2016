@@ -4,12 +4,16 @@
     ViewBag.Title = "PersonalTrainer";
 }
 <img class="img-bg" src='@Url.Content("~/Content/Immagini/" + ViewBag.Title + ".jpg")' />
-<h4>Le tue schede "Personal Trainer"</h4>
-@if(ViewBag.SchedeUt == 0)
+
+@if(ViewBag.SchedeUtCount == 0)
 {
     <hr/>
     <h1 class="label label-danger">Nessuna scheda trovata!</h1>
     <h2>Il tuo personal trainer non ha ancora inserito nessuna scheda per te.</h2>
+}
+else
+{
+    <h4>Hai @ViewBag.SchedeUtCount  schede "Personal Trainer"</h4>
 }
 
             @foreach (var item in Model)
@@ -22,9 +26,10 @@
                         </a>
                     </div>
                     <div class="col col-md-10">
-                        @Html.ActionLink(@Html.DisplayFor(modelItem => item.Nome).ToString(), "ListUt", "Schedes", new { id = item.Id }, null)
+                        @Html.ActionLink(@Html.DisplayFor(modelItem => item.Nome).ToString(), "ListUt", "Schedes", new { id = item.Id }, null)<br/>
                         <a role="button" data-toggle="collapse" href="#@item.Id" aria-expanded="false" aria-controls="@item.Id">
-                            <span class="btn btn-xs btn-default"><span class="glyphicon glyphicon-option-horizontal" title="Descrizione"></span></span>
+                            
+                            <h6 >@item.Descrizione.Substring(0, 33) ...</h6>
                         </a>
                     </div>
           </div>
@@ -33,6 +38,11 @@
                             @item.Descrizione
                         </div>
                     </div>
+
+                foreach (var items in item.Id.ToString())
+                {
+                    <span>@items.ToString()</span>
+                }
 
             }
 

@@ -110,6 +110,7 @@ namespace FitnessMVC.Controllers
             {
                 allenamento.ToList().ForEach(c => c.Serie = allenamenti.Serie);
                 allenamento.ToList().ForEach(c => c.Ripetizioni = allenamenti.Ripetizioni);
+                allenamento.ToList().ForEach(c => c.Descrizione = allenamenti.Descrizione);
                 db.SaveChanges();
                 return RedirectToAction("ListEseEdit", "Allenamentis", new { id = esercizio ,idScheda = scheda,user = Request.QueryString["user"]});
             }
@@ -147,12 +148,17 @@ namespace FitnessMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditUt([Bind(Include = "Id,Scheda_Id,GruppoMuscolare,Esercizio_Id,Serie,SerieUt,Ripetizioni,RipetizioniUt,Peso,PesoUt,Riposo,RiposoUt,Descrizione,Numero")] Allenamenti allenamenti, int? id)
+        public ActionResult EditUt([Bind(Include = "Id,Scheda_Id,GruppoMuscolare,Esercizio_Id,Serie,SerieUt,Ripetizioni,RipetizioniUt,Peso,PesoUt,Riposo,RiposoUt,Descrizione,Numero,Data")] Allenamenti allenamenti, int? id)
         {
             if (ModelState.IsValid)
             {
                 int ese = Convert.ToInt16(Request.QueryString["ese"]);
                 allenamenti.Numero = ese;
+                //Imposto la data dell'allenamento se non è già stata impostata
+                if (allenamenti.Data.Year < 1900)
+                {
+                    allenamenti.Data = DateTime.Now;
+                }
                 db.Entry(allenamenti).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("DetailsUt", "Schedes", new { id = Request.QueryString["scheda"], ese = ese });

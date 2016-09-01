@@ -22,11 +22,26 @@
     <div class="row">
         <div class="col col-md-12 text-center"> 
             <img class="img-rounder img-circle img-esercizio" src="@Url.Content("~/Content/Immagini/Esercizi/" + Model.Esercizio_Id + ".jpg")" />
-
+            
         </div>
     </div>
-    <div>
-        @Html.ActionLink(" ", "DetailsUt", "Schedes", new { id = Request["scheda"], ese = Request.QueryString["ese"] }, new { @class = "glyphicon glyphicon-arrow-left" })
+    <div class="row">
+        <div class=" col col-md-1">
+            @Html.ActionLink(" ", "DetailsUt", "Schedes", new { id = Request["scheda"], ese = Request.QueryString["ese"] }, new { @class = "glyphicon glyphicon-arrow-left" })
+
+        </div>
+        <div class="col col-md-10 text-center">
+            @if (Model.Data.Year > 1900)
+            {
+                @Html.HiddenFor(model => model.Data)
+                <span class="badge">@Model.Data.ToLongDateString() - @Model.Data.ToShortTimeString()</span>
+            }
+
+        </div>
+        <div class="col col-md-1">
+
+        </div>
+
 
     </div>
     <div class="row containerRip">

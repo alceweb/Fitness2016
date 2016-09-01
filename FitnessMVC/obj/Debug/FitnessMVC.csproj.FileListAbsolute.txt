@@ -193,6 +193,8 @@ C:\Visual Studio 2015\Progetti\Fitness2016\FitnessMVC\obj\Debug\FitnessMVC.Migra
 C:\Visual Studio 2015\Progetti\Fitness2016\FitnessMVC\obj\Debug\FitnessMVC.Migrations.esercizi.resources
 C:\Visual Studio 2015\Progetti\Fitness2016\FitnessMVC\obj\Debug\FitnessMVC.Migrations.Numero.resources
 C:\Visual Studio 2015\Progetti\Fitness2016\FitnessMVC\obj\Debug\FitnessMVC.Migrations.riposo.resources
+C:\Visual Studio 2015\Progetti\Fitness2016\FitnessMVC\obj\Debug\FitnessMVC.Migrations.dataAllenamento.resources
 C:\Visual Studio 2015\Progetti\Fitness2016\FitnessMVC\obj\Debug\FitnessMVC.csproj.GenerateResource.Cache
 C:\Visual Studio 2015\Progetti\Fitness2016\FitnessMVC\obj\Debug\FitnessMVC.dll
 C:\Visual Studio 2015\Progetti\Fitness2016\FitnessMVC\obj\Debug\FitnessMVC.pdb
+C:\Visual Studio 2015\Progetti\Fitness2016\FitnessMVC\obj\Debug\FitnessMVC.csprojResolveAssemblyReference.cache

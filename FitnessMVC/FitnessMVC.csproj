@@ -224,6 +224,10 @@
     <Compile Include="Migrations\201608231342252_riposo.Designer.cs">
       <DependentUpon>201608231342252_riposo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608300947161_dataAllenamento.cs" />
+    <Compile Include="Migrations\201608300947161_dataAllenamento.Designer.cs">
+      <DependentUpon>201608300947161_dataAllenamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -450,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608231342252_riposo.resx">
       <DependentUpon>201608231342252_riposo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608300947161_dataAllenamento.resx">
+      <DependentUpon>201608300947161_dataAllenamento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

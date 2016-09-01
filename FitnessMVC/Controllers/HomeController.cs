@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using FitnessMVC.Models;
+using System.Web.Helpers;
+using System.Data;
+using System.Data.Entity;
 
 namespace FitnessMVC.Controllers
 {
@@ -37,7 +40,7 @@ namespace FitnessMVC.Controllers
         {
             var uid = User.Identity.GetUserId();
             var schedeUt = db.Schedes.Where(u => u.User_Id == uid);
-            ViewBag.SchedeUt = schedeUt.Count();
+            ViewBag.SchedeUtCount = schedeUt.Count();
             return View(schedeUt);
         }
 
@@ -49,8 +52,7 @@ namespace FitnessMVC.Controllers
 
         public ActionResult Test()
         {
-            var allenamenti = db.Allenamentis.ToArray();
-            return View(allenamenti);
+            return View();
         }
         [HttpPost]
         public ActionResult Test(string[] args)
